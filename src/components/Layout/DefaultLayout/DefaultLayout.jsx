@@ -1,15 +1,17 @@
+import styles from './DefaultLayout.module.scss'
+import classNames from 'classnames/bind'
 import Header from '~/components/Layout/components/Header/Header'
 import SideBar from './SideBar/SideBar'
 
-
+const cx = classNames.bind(styles)
 // eslint-disable-next-line react/prop-types
 function DefaultLayout({ children }) {
   return (
-    <div>
+    <div className={cx('wrapper')}>
       <Header />
-      <div className='container'>
+      <div className={cx('container')}>
         <SideBar />
-        <div className='content'>{children}</div>
+        <div className={cx('content')}>{children}</div>
       </div>
     </div>
   )
