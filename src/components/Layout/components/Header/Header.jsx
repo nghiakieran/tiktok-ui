@@ -25,7 +25,20 @@ const cx = classNames.bind(styles)
 const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faEarthAsia} />,
-    title: 'English'
+    title: 'English',
+    children: {
+      title: 'Language',
+      data: [
+        {
+          code: 'en',
+          title: 'English'
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt'
+        }
+      ]
+    }
   },
   {
     icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -42,9 +55,18 @@ function Header() {
   const [searchResult, setSearchResult] = useState([])
   useEffect(() => {
     setTimeout(() => {
-      setSearchResult([1, 2])
+      setSearchResult([])
     }, 0)
   }, [])
+  // Handle logic
+  // const handleMenuChange = (menuItem) => {
+  //   switch (menuItem.type) {
+  //     case 'language':
+  //       // Handle change language
+  //       break;
+  //     default:
+  //   }
+  // };
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
