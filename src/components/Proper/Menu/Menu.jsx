@@ -8,7 +8,7 @@ import Header from './Header'
 import { useState } from 'react'
 
 const cx = classNames.bind(styles)
-const defaultFn = () => { };
+const defaultFn = () => { }
 function Menu({ children, items = [], onChange = defaultFn }) {
 
   const [history, setHistory] = useState([{ data: items }])
@@ -39,6 +39,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
       // visible
       interactive
       delay={[0, 700]}
+      offset={[12, 8]}
       placement='bottom-end'
       render={attrs => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -53,6 +54,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
           </WrapperProper>
         </div>
       )}
+      onHide={() => { setHistory(prev => prev.slice(0, 1)) }}
     >
       {children}
     </Tippy>

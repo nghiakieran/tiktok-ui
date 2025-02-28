@@ -1,16 +1,23 @@
 import { useEffect, useState } from 'react'
-import Tippy from '@tippyjs/react/headless'
+import classNames from 'classnames/bind'
+import HeadlessTippy from '@tippyjs/react/headless'
+import Tippy from '@tippyjs/react'
+import 'tippy.js/dist/tippy.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCircleXmark,
   faEllipsisVertical,
   faMagnifyingGlass,
-  faSignIn, faSpinner,
+  faSpinner,
   faCircleQuestion,
   faEarthAsia,
-  faKeyboard
+  faKeyboard,
+  faCloudUpload,
+  faUser,
+  faCoins,
+  faGear,
+  faSignOut
 } from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames/bind'
 
 
 import styles from './Header.module.scss'
@@ -51,6 +58,31 @@ const MENU_ITEMS = [
   }
 ]
 
+const userMenu = [
+  {
+    icon: <FontAwesomeIcon icon={faUser} />,
+    title: 'View profile',
+    to: '/@hoaa'
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCoins} />,
+    title: 'Get coins',
+    to: '/coin'
+  },
+  {
+    icon: <FontAwesomeIcon icon={faGear} />,
+    title: 'Settings',
+    to: '/settings'
+  },
+  ...MENU_ITEMS,
+  {
+    icon: <FontAwesomeIcon icon={faSignOut} />,
+    title: 'Log out',
+    to: '/logout',
+    separate: true
+  }
+]
+
 function Header() {
   const [searchResult, setSearchResult] = useState([])
   useEffect(() => {
@@ -67,13 +99,14 @@ function Header() {
   //     default:
   //   }
   // };
+  const currentUser = true
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
         <div className={cx('logo')}>
           <img src={images.logo} alt='tiktok'/>
         </div>
-        <Tippy
+        <HeadlessTippy
           visible={searchResult.length > 0}
           interactive
           render={attrs => (
@@ -100,14 +133,36 @@ function Header() {
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </div>
-        </Tippy>
-        <div className={cx('action')}>
-          <Button text>Upload</Button>
-          <Button primary leftIcon={<FontAwesomeIcon icon={faSignIn} />}>Log in</Button>
-          <Menu items={MENU_ITEMS}>
-            <button className={cx('more-btn')}>
-              <FontAwesomeIcon icon={faEllipsisVertical} />
-            </button>
+        </HeadlessTippy>
+
+        <div className={cx('actions')}>
+          {currentUser ? (
+            <>
+              <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <FontAwesomeIcon icon={faCloudUpload} />
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Button text>Upload</Button>
+              <Button primary>Log in</Button>
+            </>
+          )}
+
+          <Menu items={currentUser ? userMenu : MENU_ITEMS} >
+            {currentUser ? (
+              <img
+                className={cx('user-avatar')}
+                src='https://placehold.co/600x400'
+                alt="Nguyen Van A"
+              />
+            ) : (
+              <button className={cx('more-btn')}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </button>
+            )}
           </Menu>
         </div>
       </div>
