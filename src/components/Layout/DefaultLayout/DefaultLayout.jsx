@@ -4,7 +4,6 @@ import Header from '~/components/Layout/components/Header/Header'
 import SideBar from './SideBar/SideBar'
 
 const cx = classNames.bind(styles)
-// eslint-disable-next-line react/prop-types
 function DefaultLayout({ children }) {
   return (
     <div className={cx('wrapper')}>
