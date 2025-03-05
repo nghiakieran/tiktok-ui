@@ -12,6 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Tippy from '@tippyjs/react'
 import classNames from 'classnames/bind'
 import 'tippy.js/dist/tippy.css'
+import { Link } from 'react-router-dom'
+import routesConfig from '~/config/routes'
 
 
 import images from '~/assets/images'
@@ -92,9 +94,7 @@ function Header() {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <div className={cx('logo')}>
-          <img src={images.logo} alt='tiktok'/>
-        </div>
+        <Link className={cx('logo-link')} to={routesConfig.home}><img src={images.logo} alt='tiktok' /></Link>
         {/* Search */}
         <Search />
 
@@ -114,6 +114,7 @@ function Header() {
               <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
                 <button className={cx('action-btn')}>
                   <InboxIcon />
+                  <span className={cx('badge')}>12</span>
                 </button>
               </Tippy>
             </>
