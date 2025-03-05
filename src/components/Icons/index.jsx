@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export const UploadIcon = ({ width = '3.2rem', height = '3.2rem', className }) => (
   <svg
     className={className}
