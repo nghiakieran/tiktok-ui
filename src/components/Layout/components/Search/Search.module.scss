@@ -28,6 +28,7 @@
     font-size: 1.6rem;
     caret-color: var(--primary);
     height: 100%;
+    padding-right: 40px;
   }
 
   input:not(:placeholder-shown)~.search-btn {
