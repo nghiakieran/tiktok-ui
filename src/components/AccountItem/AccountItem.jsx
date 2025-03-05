@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import styles from './AccountItem.module.scss'
-import Image from '~/components/Image'
+import Image from '~/components/Image/Image'
 
 const cx = classNames.bind(styles)
 

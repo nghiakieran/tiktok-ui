@@ -9,7 +9,7 @@ import 'tippy.js/dist/tippy.css'
 import classNames from 'classnames/bind'
 import styles from './Search.module.scss'
 
-import { SearchIcon } from '~/components/Icons'
+import { SearchIcon } from '~/components/Icons/Icons'
 import AccountItem from '~/components/AccountItem/AccountItem'
 import WrapperProper from '~/components/Proper/Proper'
 import useDebounce from '~/hooks/useDebounce'
