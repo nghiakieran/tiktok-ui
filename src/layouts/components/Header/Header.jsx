@@ -9,10 +9,10 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 import Tippy from '@tippyjs/react'
 import classNames from 'classnames/bind'
 import 'tippy.js/dist/tippy.css'
-import { Link } from 'react-router-dom'
 import routesConfig from '~/config/routes'
 
 
@@ -20,7 +20,7 @@ import images from '~/assets/images'
 import Button from '~/components/Button/Button'
 import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons'
 import Image from '~/components/Image'
-import Search from '~/components/Layout/components/Search/Search'
+import Search from '~/layouts/components/Search/Search'
 import Menu from '~/components/Proper/Menu/Menu'
 import styles from './Header.module.scss'
 
