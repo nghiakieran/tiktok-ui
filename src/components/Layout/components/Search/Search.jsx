@@ -9,11 +9,11 @@ import 'tippy.js/dist/tippy.css'
 import classNames from 'classnames/bind'
 import styles from './Search.module.scss'
 
-import * as request from '~/utils/request'
 import AccountItem from '~/components/AccountItem/AccountItem'
 import { SearchIcon } from '~/components/Icons'
 import WrapperProper from '~/components/Proper/Proper'
 import useDebounce from '~/hooks/useDebounce'
+import * as searchService from '~/api/searchService'
 
 const cx = classNames.bind(styles)
 
@@ -31,24 +31,14 @@ function Search() {
       setSearchResult([])
       return
     }
-    setLoading(true)
-
     const fetchApi = async () => {
-      try {
-        const res = await request
-          .get('/users/search', {
-            params: {
-              q: debounced,
-              type: 'less'
-            }
-          })
-        setSearchResult(res.data)
-        setLoading(false)
-      } catch (error) {
-        setLoading(false)
-      }
-    }
+      setLoading(true)
 
+      const result = await searchService.search(debounced)
+      setSearchResult(result)
+
+      setLoading(false)
+    }
     fetchApi()
 
   }, [debounced])
