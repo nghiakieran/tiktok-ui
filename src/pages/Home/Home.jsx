@@ -1,7 +1,7 @@
 
 function Home() {
   return (
-    <div style={{ height: 2000 }}>Home</div>
+    <div>Home</div>
   )
 }
 
