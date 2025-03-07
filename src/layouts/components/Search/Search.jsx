@@ -20,7 +20,7 @@ const cx = classNames.bind(styles)
 function Search() {
   const [searchResult, setSearchResult] = useState([])
   const [searchValue, setSearchValue] = useState('')
-  const [showResult, setShowResult] = useState(true)
+  const [showResult, setShowResult] = useState(false)
   const [loading, setLoading] = useState(false)
   const inputRef = useRef()
 
@@ -72,7 +72,9 @@ function Search() {
               <h4 className={cx('title')}>Accounts</h4>
               {searchResult.map(result => {
                 return (
-                  <AccountItem key={result.id} data={result} />
+                  <AccountItem key={result.id} data={result} onClick={() => {
+                    setShowResult(false)
+                  }} />
                 )
               })}
             </WrapperProper>
