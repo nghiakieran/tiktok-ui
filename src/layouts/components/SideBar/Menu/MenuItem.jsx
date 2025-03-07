@@ -2,10 +2,10 @@ import classNames from 'classnames/bind'
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import style from './Menu.module.scss'
+import styles from './Menu.module.scss'
 
 
-const cx = classNames.bind(style)
+const cx = classNames.bind(styles)
 function MenuItem({ title, to, icon, activeIcon }) {
   return (
     <NavLink className={nav => (cx('menu-item', { active: nav.isActive }))} to={to}>
